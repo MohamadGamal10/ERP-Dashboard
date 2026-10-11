@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>ERP_Dashboard.Core</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="14.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ERP Dashboard.Data\ERP Dashboard.Data.csproj" />
+    <ProjectReference Include="..\ERP Dashboard.Infrastructure\ERP Dashboard.Infrastructure.csproj" />
+    <ProjectReference Include="..\ERP Dashboard.Service\ERP Dashboard.Service.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>ERP_Dashboard.Service</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ERP Dashboard.Data\ERP Dashboard.Data.csproj" />
+    <ProjectReference Include="..\ERP Dashboard.Infrastructure\ERP Dashboard.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
