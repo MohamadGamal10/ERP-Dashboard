@@ -20,23 +20,35 @@ namespace ERP_Dashboard.Service.Implementations
             var customers = await _customerRepository.GetTableNoTracking().ToListAsync();
             return customers;
         }
-        public Task<Customer> GetByIDAsync(int id)
+        public async Task<Customer> GetByIDAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _customerRepository.GetByIdAsync(id);
         }
-        public Task<string> AddAsync(Customer customer)
+        public async Task<string> AddAsync(Customer customer)
         {
-            throw new NotImplementedException();
+            var added = await _customerRepository.AddAsync(customer);
+            return added != null ? "Customer created successfully" : "Failed to create customer";
         }
 
         public Task<string> EditAsync(Customer customer)
         {
-            throw new NotImplementedException();
+            return EditInternalAsync(customer);
+        }
+        private async Task<string> EditInternalAsync(Customer customer)
+        {
+            await _customerRepository.UpdateAsync(customer);
+            return "Customer updated successfully";
         }
 
         public Task<string> DeleteAsync(Customer customer)
         {
-            throw new NotImplementedException();
+            return DeleteInternalAsync(customer);
+        }
+
+        private async Task<string> DeleteInternalAsync(Customer customer)
+        {
+            await _customerRepository.DeleteAsync(customer);
+            return "Customer deleted successfully";
         }
     }
 }

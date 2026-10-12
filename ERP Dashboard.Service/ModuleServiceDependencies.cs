@@ -9,6 +9,8 @@ namespace ERP_Dashboard.Service
         public static IServiceCollection AddServiceDependencies(this IServiceCollection services)
         {
             services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<ISupplierService, SupplierService>();
             return services;
         }
     }

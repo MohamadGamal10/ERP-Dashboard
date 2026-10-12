@@ -1,3 +1,5 @@
+using ERP_Dashboard.Core;
+using ERP_Dashboard.Infrastructure;
 using ERP_Dashboard.Infrastructure.Context;
 using ERP_Dashboard.Service;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +18,7 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add service dependencies
-builder.Services.AddServiceDependencies();
+builder.Services.AddInfrastructureDependencies().AddServiceDependencies().AddCoreDependencies();
 
 var app = builder.Build();
 
