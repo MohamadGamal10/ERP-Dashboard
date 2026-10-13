@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using ERP_Dashboard.Core.Behaviors;
+using FluentValidation;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace ERP_Dashboard.Core
@@ -7,15 +10,15 @@ namespace ERP_Dashboard.Core
     {
         public static IServiceCollection AddCoreDependencies(this IServiceCollection services)
         {
-            var coreAssembly = typeof(ModuleCoreDependencies).Assembly;
-            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(coreAssembly));
+            //Configuration Of Mediator
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+            //Configuration Of Automapper
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-            services.AddAutoMapper(cfg => cfg.AddMaps(coreAssembly));
+            //Get Validators
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
-            // Get Validators
-            //services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            // 
-            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             return services;
         }
     }
